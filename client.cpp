@@ -12,7 +12,7 @@ void run_client()
 	try 
 	{
 		tcp::socket socket(ClientData::io_context);
-    	socket.connect(tcp::endpoint(tcp::v4(), ClientData::port));
+    	socket.connect(tcp::endpoint(boost::asio::ip::address::from_string("192.168.0.103"), ClientData::port));
     	std::cout << "Соединение с сервером установлено" << std::endl;
 
     	send_message_to_server("Hello from client", socket);
@@ -23,7 +23,7 @@ void run_client()
 
     	std::cout << "Клиент отключен от сервера" << std::endl;
 	}
-	catch (std::exception& e) 
+	catch (std::exception& e)
     {
         std::cerr << "Ошибка: " << e.what() << std::endl;
     }

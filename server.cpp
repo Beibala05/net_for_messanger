@@ -9,7 +9,7 @@ void run_server()
 {
 	try 
 	{
-		tcp::acceptor 	acceptor(ServerData::io_context, tcp::endpoint(tcp::v4(), ServerData::port));
+		tcp::acceptor 	acceptor(ServerData::io_context, tcp::endpoint(boost::asio::ip::address::from_string("192.168.0.103"), ServerData::port));
 
 		std::cout << "Сервер запущен на порту 12345" << std::endl;
 
