@@ -1,10 +1,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include <iostream>
 #include <boost/asio.hpp>
-#include <mutex>
-#include <string>
 
 using boost::asio::ip::tcp;
 
@@ -18,9 +15,8 @@ struct ServerData
 
 void 								run_server();
 void 								listen(tcp::acceptor& acceptor);
-void 								add_client();
-void 								reomve_client();
 void 								send_message_to_client(std::string message, tcp::socket& socket);
+void 								handle_client(std::shared_ptr<tcp::socket> socket);
 std::string 						read_message_from_client(tcp::socket& socket);
 
 #endif // SERVER_H
